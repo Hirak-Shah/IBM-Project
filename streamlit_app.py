@@ -26,16 +26,18 @@ def create_association_rules(dataframe):
 
     # Remove duplicate antecedents
     antecedents = list(set(antecedents))
-    return antecedents
+    return [antecedents, consequents]
 
 # Main Streamlit app
 def main():
     st.title("Association Rules Streamlit App")
 
     if st.button("Generate Association Rules"):
-        antecedents = create_association_rules(df)
+        antecedents = create_association_rules(df)[0]
+        consequents = create_association_rules(df)[1]
         st.success("Association rules generated!")
         st.text(antecedents)
+        st.text(consequents)
         # Create a dropdown menu to select antecedents
         selected_antecedent = st.selectbox("Select your 1st Liquor", antecedents)
     
