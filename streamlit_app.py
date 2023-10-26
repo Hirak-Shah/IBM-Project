@@ -36,12 +36,12 @@ def main():
         antecedents = create_association_rules(df)
         st.success("Association rules generated!")
 
-    # Create a dropdown menu to select antecedents
-    selected_antecedent = st.selectbox("Select your 1st Liquor", antecedents)
-
-    # Display consequents based on the selected antecedent
-    consequents_str = f"Consequents for {selected_antecedent}: [consequent_1, consequent_2, ...]"
-    st.text(consequents_str)
+        # Create a dropdown menu to select antecedents
+        selected_antecedent = st.selectbox("Select your 1st Liquor", antecedents)
+    
+        # Display consequents based on the selected antecedent
+        consequents_str = f"Consequents for {selected_antecedent}: [consequent_1, consequent_2, ...]"
+        st.text(consequents_str)
 
 if __name__ == "__main__":
     main()
