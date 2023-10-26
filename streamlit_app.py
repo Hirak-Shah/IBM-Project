@@ -42,7 +42,9 @@ def main():
         selected_antecedent = st.selectbox("Select your 1st Liquor", antecedents)
     
         # Display consequents based on the selected antecedent
-        consequents_str = f"Consequents for {selected_antecedent}: [consequent_1, consequent_2, ...]"
+        consequents_str = ', '.join(consequents[i] for i in range(len(antecedents)) if antecedents[i] == selected_antecedent)
+        # consequent_label.config(text=f'Consequents: {consequents_str}')
+        consequents_str = f"Consequents for {selected_antecedent}: {consequents_str}"
         st.text(consequents_str)
 
 if __name__ == "__main__":
