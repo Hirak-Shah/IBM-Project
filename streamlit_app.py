@@ -35,7 +35,7 @@ def main():
     if st.button("Generate Association Rules"):
         antecedents = create_association_rules(df)
         st.success("Association rules generated!")
-        st.text("antecedents :-", antecedents)
+        st.text(antecedents)
         # Create a dropdown menu to select antecedents
         selected_antecedent = st.selectbox("Select your 1st Liquor", antecedents)
     
