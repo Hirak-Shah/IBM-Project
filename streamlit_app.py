@@ -32,21 +32,16 @@ def create_association_rules(dataframe):
 def main():
     st.title("Association Rules Streamlit App")
 
-    if st.button("Generate Association Rules"):
-        antecedents = create_association_rules(df)[0]
-        consequents = create_association_rules(df)[1]
-        st.success("Association rules generated!")
-        st.text(antecedents)
-        st.text(consequents)
-        # Create a dropdown menu to select antecedents
-        selected_antecedent = st.selectbox("Select your 1st Liquor", antecedents)
-    
-        # Display consequents based on the selected antecedent
-        consequents_str = ', '.join(consequents[i] for i in range(len(antecedents)) if antecedents[i] == selected_antecedent)
-        # consequent_label.config(text=f'Consequents: {consequents_str}')
+    with st.form("association_form"):
+        st.write("### Select your 1st Liquor:")
+        selected_antecedent = st.selectbox("", create_association_rules(df)[0])
+
+        st.form_submit_button("Generate Association Rules")
+
+    if selected_antecedent:
+        consequents_str = ', '.join(create_association_rules(df)[1][i] for i in range(len(create_association_rules(df)[0])) if create_association_rules(df)[0][i] == selected_antecedent)
         consequents_str = f"Consequents for {selected_antecedent}: {consequents_str}"
         st.text(consequents_str)
 
 if __name__ == "__main__":
     main()
-
